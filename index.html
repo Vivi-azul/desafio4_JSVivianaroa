@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Inmobiliaria V & L</title>
+</head>
+<body>
+    <navbar>INMOBILIARIA V & L
+      <a href="./propiedades_venta.html">En venta</a>
+        <a href="./propiedades_arriendo.html">Arriendo</a>
+       
+    </navbar>
+    <div>
+       <h1>Encuentra tu nuevo hogar</h1>
+      <img width="150px" src="./assets/img/img-main.jpeg" alt="edificio">
+    </div>
+
+    <section class="principal">
+    <div>
+      <h2>Venta</h2>
+    <img width="100px" src="./assets/img/casacondomio_1.webp" alt="casa en condomio">
+    <img width="100px" src="./assets/img/departamento_1.png" alt="departamento pequeño">
+    <img width="100px" src="./assets/img/casabuin.webp" alt="Casa en Buin">
+   </div>
+
+   <div>
+    <h2>Arriendo</h2>
+    <img width="100px" src="./assets/img/departamentopequeno.png" alt="departamento pequeño">
+    <img width="100px" src="./assets/img/casa_arriendo.jpg" alt="Casa en arriendo">
+    <img width="100px" src="./assets/img/departamento_arriendo.jpg" alt="Departamento en arriendo">
+   </div>
+
+    </section>
+    
+   
+
+
+    <div id="detalle"></div>
+
+  <script>
+    
+const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id'));
+    const propiedad = propiedades.find(p => p.id === id);
+
+    const contenedor = document.getElementById('detalle');
+
+    if (propiedad) {
+      contenedor.innerHTML = `
+        <h1>${propiedad.nombre}</h1>
+        <img src="${propiedad.imagen}" width="300">
+        <p>${propiedad.descripcion}</p>
+
+        <p>¿Se permite fumar?: ${propiedad.smoke ? 'Sí' : 'No'}</p>
+        <p>¿Se permiten mascotas?: ${propiedad.pets ? 'Sí' : 'No'}</p>
+      `;
+    } else {
+      contenedor.innerHTML = "<p>Propiedad no encontrada.</p>";
+    }
+  </script>
+
+
+<!-- <script src="./assets/js/script.js"></script> -->
+</body>
+</html>
